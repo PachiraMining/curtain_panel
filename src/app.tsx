@@ -17,7 +17,7 @@ interface Props {
 initPanelEnvironment({ useDefaultOffline: true });
 class App extends React.Component<Props> {
   componentDidMount() {
-    console.log('=== App did mount');
+    console.log('=== App did mount 1');
   }
 
   render() {

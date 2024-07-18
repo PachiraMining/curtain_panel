@@ -14,8 +14,7 @@ export default function Home() {
 
   const devInfo = useDevInfo() || {};
   // const dpState = useAtomValue(selectDpStateAtom) || {};
-  console.log("devInfo show", devInfo); // print and view devInfo content
-  console.log("devInfo element", devInfo.dpCodes.battery_percentage); // print and view devInfo content
+  console.log("devInfo", devInfo); // print and view devInfo content
 
   const { control, percent_control, percent_state, work_state, situation_set, detect_master} = useProps();
   const actions = useActions();
@@ -72,12 +71,13 @@ export default function Home() {
           <View className={styles.controlClose} onClick={close}></View>
         </View>
         <View className={styles.info}>
-          <View className={styles.battery}>{'Battery ' + devInfo.dpCodes.battery_percentage}</View>
-          <View className={styles.light}>{'Light ' + devInfo.dpCodes.light_current}</View>
+          <View className={styles.battery}>Battery</View>
+          <View className={styles.light}>Light</View>
         </View>
 
         <View className={styles.info}>
           <View className={styles.controlBool} onClick={toggleBooleanOne}></View>
+          <View className={styles.light}>{devInfo.someValue}</View>
         </View>
       </View>
 
