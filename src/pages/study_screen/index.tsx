@@ -5,6 +5,7 @@ import { useActions, useProps } from '@ray-js/panel-sdk'
 import Curtain from "@/components/curtain";
 import { showToast } from '@ray-js/ray';
 import Strings from '@/i18n';
+import { router } from '@ray-js/ray';
 
 import { useDevInfo } from "@ray-js/panel-sdk";
 import { useAtomValue } from "jotai";
@@ -59,28 +60,31 @@ export default function Setting() {
     actions.detect_master.set(true, { immediate: true });
   }, []);
 
+  const handleClick = () => {
+    router.push("/setting");
+  };
+
   return (
-    <View className={styles.view}>
-      <View className={styles.curtainBox}>
-        <View className={styles.curtain} >
-          <Curtain control={control} work_state={Strings.getDpLang("work_state", work_state)} value={convertPercent} bindchangend={onChangend}></Curtain>
-        </View>
-        <View className={styles.control}>
-          <View className={styles.controlOpen} onClick={open}></View>
-          <View className={styles.controlStop} onClick={stop}></View>
-          <View className={styles.controlClose} onClick={close}></View>
-        </View>
-        <View className={styles.info}>
-          <View className={styles.battery}>Battery</View>
-          <View className={styles.light}>Light</View>
-        </View>
-
-        <View className={styles.info}>
-          <View className={styles.controlBool} onClick={toggleBooleanOne}></View>
-          <View className={styles.light}>{devInfo.someValue}</View>
-        </View>
+    <View className={styles.layout}>
+      <View className={styles.curtainBox}></View>
+      <View className={styles.text}>
+        lorem ipsum dolor sit amet consectetur adipiscing elit
       </View>
-
+      <View className={styles.textSecondary}>
+        lorem ipsum dolor sit amet consectetur adipiscing elit
+      </View>
+      <View className={styles.study} onClick={handleClick}>
+        Start Study
+      </View>
+      <View className={styles.textThird}>
+        lorem ipsum dolor sit amet consectetur adipiscing elit
+      </View>
+      <View className={styles.left}  onClick={handleClick}>
+         Left
+      </View>
+      <View className={styles.right}  onClick={handleClick}>
+         Right
+      </View>
     </View>
-  )
+  );
 }

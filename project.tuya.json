@@ -11,5 +11,6 @@
     "BizKit": "4.5.1",
     "DeviceKit": "4.5.1"
   },
-  "compileType": "miniprogram"
+  "compileType": "miniprogram",
+  "remoteDebug": "mqtt"
 }

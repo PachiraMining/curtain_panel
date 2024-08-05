@@ -2,7 +2,11 @@ import { Routes } from '@ray-js/types'
 
 export const routes: Routes = [
   {
-    route: '/',
-    path: '/pages/home/index',
+    route: '/study_screen',
+    path: '/pages/study_screen/index',
+  },
+  {
+    route: '/setting',
+    path: '/pages/setting/index',
   }
 ]
