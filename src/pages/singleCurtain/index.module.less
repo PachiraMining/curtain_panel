@@ -1,0 +1,125 @@
+.layout {
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  position: absolute;
+  top: 0; /* Align to the top of the viewport */
+  left: 0; /* Align to the left of the viewport */
+  gap: 0px;
+  opacity: 1; /* Ensure it's visible */
+  background-color: white; /* Background color for visibility */
+}
+
+.curtain {
+  position: absolute;
+  top: 145px;
+  left: 23px;
+  width: 348px;
+  height: 224px;
+/*  height: 800rpx;*/
+
+}
+
+.control {
+  position: absolute;
+  top: 526px;
+  left: 30px;
+  width: 500rpx;
+  height: 136rpx;
+  margin: 40rpx auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.controlOpen {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../../res/open_curtain.png");
+  background-size: 50rpx 50rpx;
+  width: 136rpx;
+  height: 136rpx;
+  border-radius: 999rpx;
+  background-color: rgba(255, 255, 255, .1);
+}
+
+.controlClose {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../../res/close_curtain.png");
+  background-size: 50rpx 50rpx;
+  width: 136rpx;
+  height: 136rpx;
+  border-radius: 999rpx;
+  background-color: rgba(255, 255, 255, .1);
+}
+
+.controlStop {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../../res/stop_icon.png");
+  background-size: 50rpx 50rpx;
+  width: 136rpx;
+  height: 136rpx;
+  border-radius: 999rpx;
+  background-color: rgba(255, 255, 255, .1);
+
+}
+
+.controlBool {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../../res/checkmark.png");
+  background-size: 50rpx 50rpx;
+  width: 136rpx;
+  height: 136rpx;
+  border-radius: 999rpx;
+  background-color: rgba(255, 255, 255, .1);
+}
+
+.info {
+  width: 500rpx;
+  height: 136rpx;
+  top:666px;
+  left: 33px;
+  position: absolute;
+/*  margin: 40rpx auto;*/
+  margin: 0rpx auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  width: 240rpx;
+  height: 136rpx;
+  border-radius: 24rpx;
+  background-color: #fff;
+  margin-bottom: 24rpx;
+}
+
+.battery {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../../res/battery.png");
+  background-size: 50rpx 50rpx;
+  width: 136rpx;
+  height: 136rpx;
+  border-radius: 999rpx;
+  background-color: rgba(255, 255, 255, .1);
+  text-align: center;
+  position: relative; /* Added to create a positioning context for the text */
+}
+
+.light {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../../res/sun.png");
+  background-size: 50rpx 50rpx;
+  width: 136rpx;
+  height: 136rpx;
+  border-radius: 999rpx;
+  background-color: rgba(255, 255, 255, .1);
+  text-align: center;
+  position: relative; /* Added to create a positioning context for the text */
+}

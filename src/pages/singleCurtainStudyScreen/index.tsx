@@ -61,7 +61,7 @@ export default function StudyScreen() {
   }, []);
 
   const handleClick = () => {
-    router.push("/setting");
+    router.push("/singleCurtainStudyScreen/singleCurtain");
   };
 
   return (

@@ -1,134 +1,74 @@
-import React, { useState } from 'react';
-import { useBoolean } from 'ahooks';
-import { setNavigationBarTitle, Text, View, ScrollView } from '@ray-js/ray';
-import { DpSchema, DpBooleanAction, useActions, useDevice, useProps } from '@ray-js/panel-sdk';
-import TyCell from '@ray-js/components-ty-cell';
-import TySwitch from '@ray-js/components-ty-switch';
-import TyActionsheet from '@ray-js/components-ty-actionsheet';
-import { Icon } from '@/components';
-import { icons } from '@/res';
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { View } from '@ray-js/components'
+import styles from './index.module.less'
+import { useActions, useProps } from '@ray-js/panel-sdk'
+import Curtain from "@/components/curtain";
+import { showToast } from '@ray-js/ray';
 import Strings from '@/i18n';
-import { useSystemInfo } from '@/hooks/useSystemInfo';
-import { DpEnumContent } from './dp-enum-content';
-import { DpValueContent } from './dp-value-content';
-import styles from './index.module.less';
+import { router, navigateBack } from '@ray-js/ray';
+import { useDevInfo } from "@ray-js/panel-sdk";
+import { useAtomValue } from "jotai";
+// import { selectDpStateAtom } from "@/atoms";
 
-const STANDARD_DPCODES = ['switch_1', 'countdown_1'];
+export default function StudyScreen() {
 
-export default function Setting() {
-  const { devInfo } = useDevice();
-  const dpState = useProps();
-  const sysInfo = useSystemInfo();
+  const devInfo = useDevInfo() || {};
+  // const dpState = useAtomValue(selectDpStateAtom) || {};
+  console.log("devInfo", devInfo); // print and view devInfo content
+
+  const { control, percent_control, percent_state, work_state, situation_set, detect_master} = useProps();
   const actions = useActions();
-  const [visible, { setTrue: setVisibleTrue, setFalse: setVisibleFalse }] = useBoolean(false);
-  const [currentSchema, setCurrentSchema] = useState<DpSchema>(null);
-  const [currentDpValue, setCurrentDpValue] = useState(null);
 
-  React.useEffect(() => {
-    setNavigationBarTitle({ title: Strings.getLang('setting') });
-  }, []);
+  const convert = useCallback((value) => {
+    if (situation_set === 'fully_close') return value;
+    return 100 - value;
+  }, [situation_set]);
 
-  const dataSource = devInfo.schema
-    .filter(
-      schema =>
-        ['bool', 'enum', 'value'].indexOf(schema?.property?.type) !== -1 &&
-        !/^(switch_|countdown_|usb_switch_|usb_countdown_)\d/i.test(schema.code) &&
-        schema.code !== 'add_ele'
-    )
-    .map(schema => {
-      const { code, mode } = schema;
-      const type = schema?.property?.type;
-      const value = dpState[code as any];
-      const BoolItem = (
-        <TySwitch
-          style={{ pointerEvents: 'auto' }}
-          disabled={mode === 'ro'}
-          checked={dpState[code] as boolean}
-          onChange={(v, evt) => {
-            evt?.origin?.stopPropagation();
-            const action = actions[code] as DpBooleanAction;
-            action.set(v);
-          }}
-        />
-      );
-      const CommonItem = (
-        <View className={styles['right-item']}>
-          <Text>{type === 'value' ? value : Strings.getDpLang(code, value as string)}</Text>
-          <Icon
-            d={icons.arrow}
-            fill={sysInfo.theme === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(51, 51, 51, 0.5)'}
-            size="12px"
-          />
-        </View>
-      );
-      const itemDisabled = mode === 'ro' || type === 'bool';
-      return {
-        style: { pointerEvents: itemDisabled ? 'none' : 'auto' },
-        title: Strings.getDpLang(code),
-        disabled: mode === 'ro',
-        content: type === 'bool' ? BoolItem : CommonItem,
-        onClick: () => {
-          setCurrentSchema({ ...schema });
-          setVisibleTrue();
-        },
-      };
-    });
+  const reverse = useCallback((value) => {
+    if (situation_set === 'fully_close') return value;
+    return 100 - value;
+  }, [situation_set]);
 
-  const flushState = React.useCallback(() => {
-    setCurrentDpValue(null);
-    setVisibleFalse();
-  }, []);
+  const convertPercent = useMemo(() => convert(percent_control), [percent_control, situation_set])
 
-  const renderActionSheetDpContent = () => {
-    let actionSheetDpContent: JSX.Element;
-    switch (currentSchema?.property?.type) {
-      case 'enum': {
-        actionSheetDpContent = (
-          <DpEnumContent
-            value={currentDpValue || dpState[currentSchema.code]}
-            schema={currentSchema}
-            onItemClick={value => setCurrentDpValue(value)}
-          />
-        );
-        break;
-      }
-      case 'value': {
-        actionSheetDpContent = (
-          <DpValueContent
-            value={currentDpValue || dpState[currentSchema.code]}
-            schema={currentSchema}
-            onChange={value => setCurrentDpValue(value)}
-          />
-        );
-        break;
-      }
-      default:
-        actionSheetDpContent = null;
-        break;
+  const onChangend = useCallback((e) => {
+    const nextPercent = reverse(e.detail.value);
+    if (nextPercent < percent_control) {
+      actions.control.set('open');
+    } else {
+      actions.control.set('close');
     }
-    return actionSheetDpContent;
+    actions.percent_control.set(nextPercent);
+  }, [percent_control, situation_set]);
+
+  const open = useCallback(() => {
+    actions.control.set('open', { immediate: true });
+    actions.percent_control.set(reverse(0), { immediate: true });
+  }, [situation_set]);
+
+  const close = useCallback(() => {
+    actions.control.set('close', { immediate: true });
+    actions.percent_control.set(reverse(100), { immediate: true });
+  }, [situation_set]);
+
+  const stop = useCallback(() => {
+    actions.control.set('stop', { immediate: true });
+  }, []);
+
+  const toggleBooleanOne = useCallback(() => {
+    actions.detect_master.set(true, { immediate: true });
+  }, []);
+
+  const handleClick = () => {
+    navigateBack ({delta:2});
   };
 
   return (
-    <ScrollView scrollY style={{ height: '100vh' }}>
-      <TyCell dataSource={dataSource} rowKey="title" isRow />
-      <TyActionsheet
-        position="bottom"
-        show={visible}
-        header={Strings.getDpLang(currentSchema?.code)}
-        cancelText={Strings.getLang('cancel')}
-        okText={Strings.getLang('confirm')}
-        onClickOverlay={flushState}
-        onCancel={flushState}
-        onOk={() => {
-          if (currentDpValue !== null) {
-            actions[currentSchema?.code].set(currentDpValue);
-          }
-          flushState();
-        }}
-      >
-        {renderActionSheetDpContent()}
-      </TyActionsheet>
-    </ScrollView>
+    <View className={styles.layout}>
+  
+      <View className={styles.detectMaster} onClick={handleClick}>
+        Re - study
+      </View>
+    </View>
   );
 }

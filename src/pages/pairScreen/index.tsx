@@ -65,10 +65,9 @@ export default function PairScreen() {
         </View>
       </View>
       <View className={styles.buttonContainer}>
-        <Button disabled={isButtonDisabled} onClick={handleClick}>
-          click me
+        <Button  disabled={isButtonDisabled} onClick={handleClick}>
+          Next
         </Button>    
-
       </View>
     </View>
   );
