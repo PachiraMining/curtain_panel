@@ -1,0 +1,18 @@
+.switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #f0f0f0; /* Light grey background */
+    border: 2px solid #007aff; /* Border with the same color as the switch */
+    border-radius: 10px; /* Rounded corners */
+  }
+  
+  .switch-container switch {
+    margin: 10px;
+  }
+  
+  /* Example for changing the color of the switch */
+  .switch-container switch[checked] {
+    --switch-color: #ff0000; /* Red color when checked */
+  }

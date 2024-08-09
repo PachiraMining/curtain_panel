@@ -11,7 +11,7 @@ import { useDevInfo } from "@ray-js/panel-sdk";
 import { useAtomValue } from "jotai";
 // import { selectDpStateAtom } from "@/atoms";
 
-export default function Setting() {
+export default function StudyScreen() {
 
   const devInfo = useDevInfo() || {};
   // const dpState = useAtomValue(selectDpStateAtom) || {};
@@ -82,7 +82,7 @@ export default function Setting() {
       <View className={styles.left}  onClick={handleClick}>
          Left
       </View>
-      <View className={styles.right}  onClick={handleClick}>
+      <View className={styles.right} onClick={handleClick}>
          Right
       </View>
     </View>

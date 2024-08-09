@@ -2,11 +2,19 @@ import { Routes } from '@ray-js/types'
 
 export const routes: Routes = [
   {
-    route: '/study_screen',
-    path: '/pages/study_screen/index',
+    route: '/pair_screen',
+    path: '/pages/pair_screen/index',
   },
   {
-    route: '/setting',
-    path: '/pages/setting/index',
-  }
+    route: '/singleCurtainStudyScreen',
+    path: '/pages/singleCurtainStudyScreen/index',
+  },
+  {
+    route: '/doubleCurtainStudyScreen',
+    path: '/pages/doubleCurtainStudyScreen/index',
+  },
+  {
+    route: '/doubleCurtainStudyScreen/doubleCurtain',
+    path: '/pages/doubleCurtain/index',
+  },
 ]
