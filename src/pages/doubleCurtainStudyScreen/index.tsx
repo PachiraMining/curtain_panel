@@ -61,7 +61,7 @@ export default function StudyScreen() {
   }, []);
 
   const handleClick = () => {
-    router.push("/setting");
+    router.push("/doubleCurtainStudyScreen/doubleCurtain");
   };
 
   return (
@@ -71,19 +71,25 @@ export default function StudyScreen() {
         lorem ipsum dolor sit amet consectetur adipiscing elit
       </View>
       <View className={styles.textSecondary}>
-        lorem ipsum dolor sit amet consectetur adipiscing elit
+        lorem ipsum dolor sit amet consectetur 
       </View>
-      <View className={styles.study} onClick={handleClick}>
+      <View className={styles.detectMaster} onClick={handleClick}>
         Start Study
       </View>
       <View className={styles.textThird}>
         lorem ipsum dolor sit amet consectetur adipiscing elit
       </View>
-      <View className={styles.left}  onClick={handleClick}>
+      <View className={styles.left}>
          Left
       </View>
-      <View className={styles.right} onClick={handleClick}>
+      <View className={styles.right}>
          Right
+      </View>
+      <View className={styles.firstCurtain}>
+         1st Curtain
+      </View>
+      <View className={styles.secondCurtain}>
+         2nd Curtain
       </View>
     </View>
   );

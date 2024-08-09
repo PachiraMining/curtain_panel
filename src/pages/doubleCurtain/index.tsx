@@ -5,6 +5,7 @@ import { useActions, useProps } from '@ray-js/panel-sdk'
 import Curtain from "@/components/curtain";
 import { showToast } from '@ray-js/ray';
 import Strings from '@/i18n';
+import { router } from '@ray-js/ray';
 
 import { useDevInfo } from "@ray-js/panel-sdk";
 import { useAtomValue } from "jotai";
@@ -59,9 +60,12 @@ export default function Setting() {
     actions.detect_master.set(true, { immediate: true });
   }, []);
 
+  const handleClick = () => {
+    router.push("/setting");
+  };
+
   return (
-    <View className={styles.view}>
-      <View className={styles.curtainBox}>
+      <View className={styles.layout}>
         <View className={styles.curtain} >
           <Curtain control={control} work_state={Strings.getDpLang("work_state", work_state)} value={convertPercent} bindchangend={onChangend}></Curtain>
         </View>
@@ -72,14 +76,8 @@ export default function Setting() {
         </View>
         <View className={styles.info}>
           <View className={styles.battery}>Battery</View>
-          <View className={styles.light}>Light</View>
+          <View className={styles.light} onClick={handleClick}>Light</View>
         </View> 
-
-        <View className={styles.info}>
-          <View className={styles.controlBool} onClick={toggleBooleanOne}></View>
-          <View className={styles.light}>{devInfo.someValue}</View>
-        </View>
-      </View>
 
     </View>
   )

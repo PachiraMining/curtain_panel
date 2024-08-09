@@ -10,15 +10,15 @@
 }
 
 .curtainBox {
-  width: 236px;
-  height: 218px;
+  width: 348px;
+  height: 224px;
   position: absolute;
-  top: 120px;
-  left: 78px;
+  top: 145px;
+  left: 23px;
   gap: 0px;
   opacity: 1; /* Ensure it's visible */
   background-color: white; /* Fallback background color */
-  background-image: url("../../res/figma/smart-curtain.png"); /* Path to your image */
+  background-image: url("../../res/double curtain/Artboard 1@2x_split.png"); /* Path to your image */
   background-size: cover; /* Adjust size to cover the container */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Prevent image from repeating */
@@ -27,30 +27,32 @@
 
 
 .text {
+  text-indent: 1em;
   width: 301px;
   height: 68px;
   position: absolute;
-  top: 350px;
-  left: 45px;
+  top: 404px;
+  left: 43px;
   opacity: 1; /* Change to 1 to make text visible */
   font-family: 'Poppins', sans-serif; /* Ensure the Poppins font is available */
   font-size: 14px;
-  font-weight: 400;
+  font-weight: normal;
   line-height: 20px;
   letter-spacing: -0.24px;
   text-align: center;
 }
 
 .textSecondary {
+  text-indent: 1em;
   width: 301px;
   height: 68px;
   position: absolute;
-  top: 397px; /* Adjust positioning for new text */
-  left: 50px;
+  top: 469px; /* Adjust positioning for new text */
+  left: 49px;
   opacity: 1;
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 20px;
   letter-spacing: -0.24px;
   text-align: center;
@@ -58,16 +60,33 @@
   ; /* Different color if needed */
 }
 
-.study {
-  width: 165px;
-  height: 45px;
+.textThird {
+  text-indent: 1em;
+  width: 301px;
+  height: 68px;
   position: absolute;
-  top: 465px;
-  left: 116px; /* Fixed typo here */
+  top: 597px; /* Adjust positioning for new text */
+  left: 49px;
+  opacity: 1;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.24px;
+  text-align: center;
+  color: black; /* Different color if needed */
+}
+
+.detectMaster {
+  width: 123px;
+  height: 30px;
+  position: absolute;
+  top: 547px;
+  left: 133px; /* Fixed typo here */
   gap: 0px;
   border-radius: 7px 7px 7px 7px; /* Rounded corner on the top-left */
   opacity: 1; /* Make button visible */
-  background-color: #202A6B; /* Button background color */
+  background-color: #FFAD0E; /* Button background color */
   color: #FCFAFA; /* Button text color */
   display: flex;
   align-items: center;
@@ -76,33 +95,16 @@
   border: none; /* Remove default border */
   font-family: 'Poppins', sans-serif; /* Font styling */
   font-size: 14px; /* Font size */
-  font-weight: 400; /* Font weight */
+  font-weight: 600; /* Font weight */
   text-align: center; /* Center text */
-}
-
-
-.textThird {
-  width: 301px;
-  height: 68px;
-  position: absolute;
-  top: 520px; /* Adjust positioning for new text */
-  left: 46px;
-  opacity: 1;
-  font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: -0.24px;
-  text-align: center;
-  color: black; /* Different color if needed */
 }
 
 .left {
   width: 75px; /* Updated width */
   height: 30px; /* Updated height */
   position: absolute;
-  top: 600px; /* Updated position from the top */
-  left: 90px; /* Updated position from the left */
+  top: 547px; /* Updated position from the top */
+  left: 41px; /* Updated position from the left */
   gap: 0px;
   border-radius: 7px; /* Rounded corners */
   opacity: 1; /* Ensure the button is visible */
@@ -115,7 +117,7 @@
   border: none; /* Remove default border */
   font-family: 'Poppins', sans-serif; /* Font styling */
   font-size: 14px; /* Font size */
-  font-weight: 400; /* Font weight */
+  font-weight: 600; /* Font weight */
   text-align: center; /* Center text */
 }
 
@@ -124,8 +126,30 @@
   width: 75px; /* Updated width */
   height: 30px; /* Updated height */
   position: absolute;
-  top: 600px; /* Updated position from the top */
-  left: 225px; /* Updated position from the left */
+  top: 547px; /* Updated position from the top */
+  left: 273px; /* Updated position from the left */
+  gap: 0px;
+  border-radius: 7px; /* Rounded corners */
+  opacity: 1; /* Ensure the button is visible */
+  background-color: #E5E5E5; /* Button background color */
+  color: #202A6B; /* Button text color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; /* Pointer cursor on hover */
+  border: none; /* Remove default border */
+  font-family: 'Poppins', sans-serif; /* Font styling */
+  font-size: 14px; /* Font size */
+  font-weight: 600; /* Font weight */
+  text-align: center; /* Center text */
+}
+
+.firstCurtain {
+  width: 100px; /* Updated width */
+  height: 30px; /* Updated height */
+  position: absolute;
+  top: 677px; /* Updated position from the top */
+  left: 59px; /* Updated position from the left */
   gap: 0px;
   border-radius: 7px; /* Rounded corners */
   opacity: 1; /* Ensure the button is visible */
@@ -138,8 +162,28 @@
   border: none; /* Remove default border */
   font-family: 'Poppins', sans-serif; /* Font styling */
   font-size: 14px; /* Font size */
-  font-weight: 400; /* Font weight */
+  font-weight: 600; /* Font weight */
   text-align: center; /* Center text */
 }
 
-
+.secondCurtain {
+  width: 100px; /* Updated width */
+  height: 30px; /* Updated height */
+  position: absolute;
+  top: 677px; /* Updated position from the top */
+  left: 229px; /* Updated position from the left */
+  gap: 0px;
+  border-radius: 7px; /* Rounded corners */
+  opacity: 1; /* Ensure the button is visible */
+  background-color: #E5E5E5; /* Button background color */
+  color: #202A6B; /* Button text color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; /* Pointer cursor on hover */
+  border: none; /* Remove default border */
+  font-family: 'Poppins', sans-serif; /* Font styling */
+  font-size: 14px; /* Font size */
+  font-weight: 600; /* Font weight */
+  text-align: center; /* Center text */
+}

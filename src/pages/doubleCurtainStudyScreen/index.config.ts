@@ -1,3 +1,3 @@
-// export default {
-//   navigationBarTitleText: "Curtain",
-// }
+export default {
+  navigationBarTitleText: "Double Curtain",
+}

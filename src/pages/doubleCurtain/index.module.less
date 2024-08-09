@@ -1,34 +1,28 @@
-.view {
-  background: url("../../res/bg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100vh;
-}
-
-.curtainBox {
-  position: relative;
-  top: 200rpx;
-  left: 0;
-  Right: 0;
-  width: 100%;
-  padding: 0 72rpx;
-/*  height: 800rpx;*/
-  background: url("../../res/main.png");
-  background-size: 100% auto;
-  background-repeat: no-repeat;
+.layout {
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  position: absolute;
+  top: 0; /* Align to the top of the viewport */
+  left: 0; /* Align to the left of the viewport */
+  gap: 0px;
+  opacity: 1; /* Ensure it's visible */
+  background-color: white; /* Background color for visibility */
 }
 
 .curtain {
-  position: relative;
-/*  width: 606rpx;*/
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 145px;
+  left: 23px;
+  width: 348px;
+  height: 224px;
 /*  height: 800rpx;*/
 
 }
 
 .control {
+  position: absolute;
+  top: 526px;
+  left: 30px;
   width: 500rpx;
   height: 136rpx;
   margin: 40rpx auto;
@@ -36,8 +30,6 @@
   justify-content: space-between;
   align-items: center;
 }
-
-
 
 
 .controlOpen {
@@ -88,6 +80,9 @@
 .info {
   width: 500rpx;
   height: 136rpx;
+  top:666px;
+  left: 33px;
+  position: absolute;
 /*  margin: 40rpx auto;*/
   margin: 0rpx auto;
   display: flex;

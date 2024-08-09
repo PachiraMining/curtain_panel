@@ -17,4 +17,8 @@ export const routes: Routes = [
     route: '/doubleCurtainStudyScreen/doubleCurtain',
     path: '/pages/doubleCurtain/index',
   },
+  {
+    route: '/setting',
+    path: '/pages/setting/index',
+  },
 ]
